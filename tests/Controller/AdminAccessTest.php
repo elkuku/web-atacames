@@ -17,7 +17,7 @@ class AdminAccessTest extends WebTestCase
         $client->request(Request::METHOD_GET, '/');
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h2', 'Symfony Playground Two');
+        self::assertSelectorTextContains('#site-title', 'Atacames');
 
         /**
          * @var UserRepository $userRepository

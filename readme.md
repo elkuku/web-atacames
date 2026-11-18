@@ -1,69 +1,49 @@
-# Symfony Playground "two"
+# Atacames
 
-![GitHub workflow](https://github.com/elkuku/symfony-playground-two/actions/workflows/tests.yml/badge.svg)
+A website about Atacames, the beach town on the Pacific coast of Esmeraldas, Ecuador, with a large
+webcam image on the home page.
 
-![screenshot](https://github.com/user-attachments/assets/c43f0b5d-8279-4737-b194-87cc0c74a140)
+Live: https://atacames.elkuku.dev
 
-## What's this??
-An opinionated [Symfony](https://symfony.com) project template including:
-
-* Symfony 8.*
-* Docker compose file for PostgreSQL
-* `dev` login form <br/> `prod` Social login with Google, GitLab, GitHub and [more](https://github.com/knpuniversity/oauth2-client-bundle#step-1-download-the-client-library)
-* A user CRUD interface
-* Bootstrap
+Built from the [Symfony Playground "two"](https://github.com/elkuku/symfony-playground-two) template:
+Symfony 8, PostgreSQL in Docker, Bootstrap, social login in `prod`, a form login in `dev`.
 
 ## Installation
-Clone the repo then use the
+
 ```shell
 bin/install
 ```
-command OR execute the script content manually.
 
-It needs Composer, the [Symfony CLI](https://symfony.com/download) and Docker with Compose v2 (`docker compose`).
-On a fresh database it loads two users, `user` and `admin`, that you can log in with using the `dev` login form.
-   
-## Usage
-Create and administer user accounts.
-```shell
-symfony console user-admin
-```
-Start and stop the environment.
+It needs Composer, the [Symfony CLI](https://symfony.com/download) and Docker with Compose v2.
+
 ```shell
 bin/start
-```
-```shell
 bin/stop
 ```
 
+## Webcam
+
+The home page shows the image at `WEBCAM_IMAGE_URL`. Set it in `.env.local` (on the server too);
+while it is empty, the page shows a placeholder of the same size (16:9, full width).
+
+```dotenv
+WEBCAM_IMAGE_URL=https://example.com/webcam/current.jpg
+```
+
+## Deployment
+
+The site runs on Plesk at `atacames.elkuku.dev` (document root `public`), deployed by pushing to the
+Plesk git remote; `bin/deploy` runs on the server after each pull. Create `.env.local` on the server
+before the first deploy (`APP_ENV=prod`, `APP_SECRET`, `DATABASE_URL`, `DEFAULT_URI`, the OAuth keys,
+`WEBCAM_IMAGE_URL`), and `bin/deploy.env` if Plesk's PHP and Composer are not on the `PATH`:
+
+```shell
+PHP_BIN=/opt/plesk/php/8.5/bin/php
+COMPOSER_BIN=/usr/lib/plesk-9.0/composer.phar
+```
 
 ## Testing
 
 ```shell
 make tests
 ```
-
-## Check for updates
-Check four outdated PHP deps, recipes and assets.
-
-```shell
-composer check
-```
-
-## Database
-
-![Database Diagram](assets/docs/database.svg)
-
-You can create this with 
-
-```shell
-composer db-diagram
-```
-
-## Google login
-
-The template ships two Google logins, "Continue with Google" (OAuth redirect) and "Sign in with Google" (Google's own button). Keep the one you need: see [Google login: pick one](doc/google-login.md).
-
-----
-
-Happy coding `=;)`

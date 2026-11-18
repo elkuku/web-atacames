@@ -1,6 +1,6 @@
 {
-    "name": "elkuku/symfony-playground-two",
-    "description": "A Symfony project template",
+    "name": "elkuku/web-atacames",
+    "description": "Website about Atacames, Ecuador, with a webcam",
     "type": "project",
     "license": "wtfpl",
     "minimum-stability": "beta",
