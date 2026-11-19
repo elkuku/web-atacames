@@ -14,7 +14,7 @@ class UserAccessTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request(Request::METHOD_GET, '/');
+        $client->request(Request::METHOD_GET, '/en');
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('#site-title', 'Atacames');
@@ -31,7 +31,7 @@ class UserAccessTest extends WebTestCase
 
         $client->loginUser($user);
 
-        $client->request(Request::METHOD_GET, '/');
+        $client->request(Request::METHOD_GET, '/en');
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h4', 'Welcome user');

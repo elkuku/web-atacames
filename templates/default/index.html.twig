@@ -1,108 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Atacames, Ecuador{% endblock %}
+{% block title %}{{ 'home.title'|trans }}{% endblock %}
+
+{% block hero %}
+    <section class="hero text-center">
+        <div class="container position-relative">
+            <p class="hero-icons mb-2" aria-hidden="true">
+                <twig:ux:icon name="bi:sun-fill" class="hero-sun" />
+            </p>
+            <h1 id="site-title" class="display-3 fw-bold">Atacames</h1>
+            <p class="lead mb-0">{{ 'home.tagline'|trans }}</p>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,40 C240,80 480,0 720,32 C960,64 1200,8 1440,36 L1440,80 L0,80 Z"></path>
+        </svg>
+    </section>
+{% endblock %}
 
 {% block body %}
-    <section class="mt-5 pt-3 text-center">
-        <h1 id="site-title" class="display-5 fw-bold">Atacames</h1>
-        <p class="lead text-body-secondary">Beach town on the Pacific coast of Esmeraldas, Ecuador</p>
-    </section>
-
     {% if app.user %}
-        <div class="alert alert-success">
-            <h4 class="mb-0">Welcome {{ app.user.param('user_name') ?: app.user.userIdentifier }}!</h4>
+        <div class="alert alert-success mt-4">
+            <h4 class="mb-0">{{ 'home.welcome'|trans({'%name%': app.user.param('user_name') ?: app.user.userIdentifier}) }}</h4>
             {% if not app.user.param('user_name') %}
-                Please <a href="{{ path('app_profile') }}">update your Profile</a>!
+                {{ 'home.update_profile'|trans({'%url%': path('app_profile')})|raw }}
             {% endif %}
         </div>
     {% endif %}
 
-    <section id="webcam" class="mb-5" aria-labelledby="webcam-title">
-        <h2 id="webcam-title" class="h4 mb-3">
-            <twig:ux:icon name="bi:camera-video" /> Live webcam
+    <section id="webcam" class="my-5" aria-labelledby="webcam-title">
+        <h2 id="webcam-title" class="section-title">
+            <twig:ux:icon name="bi:camera-video-fill" /> {{ 'webcam.title'|trans }}
         </h2>
-        <div class="ratio ratio-16x9 rounded overflow-hidden bg-body-tertiary border webcam">
-            {% if webcam_image_url %}
-                <img src="{{ webcam_image_url }}" alt="Webcam view of Atacames"
+        <figure class="webcam mb-0">
+            <div class="ratio ratio-16x9">
+                <img src="{{ webcam_image_url ?: asset('images/webcam.jpg') }}" alt="{{ 'webcam.alt'|trans }}"
                      class="w-100 h-100 object-fit-cover" data-testid="webcam-image">
-            {% else %}
-                <div class="d-flex flex-column align-items-center justify-content-center text-body-secondary"
-                     data-testid="webcam-placeholder">
-                    <twig:ux:icon name="bi:camera" class="display-1" />
-                    <p class="mt-2 mb-0">The webcam image will be shown here soon.</p>
-                </div>
-            {% endif %}
-        </div>
+            </div>
+            <span class="webcam-live"><span class="webcam-dot"></span> {{ 'webcam.live'|trans }}</span>
+            <figcaption class="webcam-caption">{{ 'webcam.caption'|trans }}</figcaption>
+        </figure>
     </section>
 
-    <section class="row g-4 mb-5">
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h3 class="h5 card-title"><twig:ux:icon name="bi:geo-alt" /> Where</h3>
-                    <p class="card-text">
-                        Atacames lies in the province of Esmeraldas on Ecuador's northern Pacific coast, about
-                        30&nbsp;km southwest of the city of Esmeraldas. It is the seat of the canton of the same
-                        name and one of the most popular beach destinations in the country.
-                    </p>
+    <section id="discover" class="mb-5" aria-labelledby="discover-title">
+        <h2 id="discover-title" class="section-title">
+            <twig:ux:icon name="bi:compass-fill" /> {{ 'discover.title'|trans }}
+        </h2>
+        <div class="row g-4">
+            {% for card in [
+                {key: 'where', icon: 'bi:geo-alt-fill'},
+                {key: 'beach', icon: 'bi:water'},
+                {key: 'culture', icon: 'bi:music-note-beamed'},
+                {key: 'food', icon: 'bi:egg-fried'},
+                {key: 'whales', icon: 'bi:binoculars-fill'},
+                {key: 'nearby', icon: 'bi:signpost-split-fill'},
+            ] %}
+                <div class="col-md-6 col-lg-4">
+                    <article class="card tropical-card h-100">
+                        <div class="card-body">
+                            <span class="tropical-icon" aria-hidden="true"><twig:ux:icon name="{{ card.icon }}" /></span>
+                            <h3 class="h5 card-title">{{ ('cards.' ~ card.key ~ '.title')|trans }}</h3>
+                            <p class="card-text">{{ ('cards.' ~ card.key ~ '.text')|trans }}</p>
+                        </div>
+                    </article>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h3 class="h5 card-title"><twig:ux:icon name="bi:water" /> The beach</h3>
-                    <p class="card-text">
-                        A long, wide beach of fine sand with warm water all year round. The malecón along the
-                        shore is lined with hotels, restaurants and the famous cocktail stands, and comes alive
-                        at night and on holiday weekends.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h3 class="h5 card-title"><twig:ux:icon name="bi:music-note-beamed" /> Culture</h3>
-                    <p class="card-text">
-                        Esmeraldas is the heart of Afro-Ecuadorian culture. Marimba music and dance, recognised
-                        by UNESCO as intangible cultural heritage, are part of everyday life on the coast.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h3 class="h5 card-title"><twig:ux:icon name="bi:egg-fried" /> Food</h3>
-                    <p class="card-text">
-                        Fresh seafood everywhere: encocado (fish or shrimp in coconut sauce), ceviche, encebollado,
-                        fried fish with patacones, and cocadas, the coconut sweets sold on the beach.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h3 class="h5 card-title"><twig:ux:icon name="bi:binoculars" /> Whales</h3>
-                    <p class="card-text">
-                        From about June to September humpback whales come to the warm waters off the coast to
-                        mate and give birth. Boat tours leave from Atacames and nearby Súa.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h3 class="h5 card-title"><twig:ux:icon name="bi:compass" /> Nearby</h3>
-                    <p class="card-text">
-                        The quieter beaches of Súa, Same and Tonsupa are a short ride away. Esmeraldas has the
-                        closest airport, and buses from Quito take about six to seven hours.
-                    </p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}

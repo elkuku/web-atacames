@@ -21,10 +21,17 @@ bin/start
 bin/stop
 ```
 
+## Languages
+
+The site is in English, German and Spanish: `/en`, `/de`, `/es`. `/` redirects to the language of
+the browser (English if it is none of them). The texts are in `translations/messages.*.yaml`, the
+languages in `enabled_locales` (`config/packages/translation.yaml`) and `app.locales`
+(`config/services.yaml`).
+
 ## Webcam
 
-The home page shows the image at `WEBCAM_IMAGE_URL`. Set it in `.env.local` (on the server too);
-while it is empty, the page shows a placeholder of the same size (16:9, full width).
+The home page shows the image at `WEBCAM_IMAGE_URL`, full width in 16:9. Set it in `.env.local`
+(on the server too); while it is empty, the page shows `assets/images/webcam.jpg`.
 
 ```dotenv
 WEBCAM_IMAGE_URL=https://example.com/webcam/current.jpg

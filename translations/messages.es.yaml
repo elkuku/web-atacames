@@ -1,0 +1,42 @@
+nav:
+    webcam: Cámara web
+    discover: Descubre
+    language: Idioma
+
+home:
+    title: Atacames, Ecuador
+    tagline: Balneario en la costa del Pacífico de Esmeraldas, Ecuador
+    welcome: ¡Bienvenido/a %name%!
+    update_profile: ¡Por favor <a href="%url%">completa tu perfil</a>!
+
+webcam:
+    title: Cámara web en vivo
+    alt: Vista de la cámara web sobre la playa y el malecón de Atacames
+    live: En vivo
+    caption: La vista sobre el malecón hacia la playa.
+
+discover:
+    title: Descubre Atacames
+
+cards:
+    where:
+        title: Ubicación
+        text: Atacames está en la provincia de Esmeraldas, en la costa norte del Pacífico ecuatoriano, a unos 30 km al suroeste de la ciudad de Esmeraldas. Es la cabecera del cantón del mismo nombre y uno de los balnearios más visitados del país.
+    beach:
+        title: La playa
+        text: Una playa larga y ancha de arena fina, con agua tibia todo el año. El malecón está lleno de hoteles, restaurantes y los famosos puestos de cocteles, y se llena de vida por la noche y en los feriados.
+    culture:
+        title: Cultura
+        text: Esmeraldas es el corazón de la cultura afroecuatoriana. La música y la danza de marimba, reconocidas por la UNESCO como patrimonio cultural inmaterial, son parte de la vida diaria en la costa.
+    food:
+        title: Comida
+        text: Mariscos frescos por todas partes. Encocado de pescado o camarón, ceviche, encebollado, pescado frito con patacones y cocadas, los dulces de coco que se venden en la playa.
+    whales:
+        title: Ballenas
+        text: Más o menos de junio a septiembre, las ballenas jorobadas llegan a las aguas cálidas frente a la costa para aparearse y dar a luz. Los paseos en lancha salen de Atacames y de la cercana Súa.
+    nearby:
+        title: Cerca
+        text: Las playas más tranquilas de Súa, Same y Tonsupa están a poca distancia. El aeropuerto más cercano está en Esmeraldas, y los buses desde Quito tardan unas seis a siete horas.
+
+footer:
+    text: Sol, mar y marimba en la costa de Esmeraldas.

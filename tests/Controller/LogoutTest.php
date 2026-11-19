@@ -26,7 +26,7 @@ class LogoutTest extends WebTestCase
         $client = static::createClient();
         $client->loginUser($this->getUser());
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en');
         $logoutUrl = $crawler->filter('a[title="Logout"]')->attr('href');
 
         self::assertNotNull($logoutUrl);

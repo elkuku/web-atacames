@@ -1,11 +1,15 @@
-<footer class="footer mt-auto py-3 bg-body-tertiary">
-    <div class="container">
-        <span class="float-end">
-            Made with <a href="https://symfony.com">
-                <twig:ux:icon name="fa-brands:symfony" /> Symfony
-            </a>
-        </span>
-
-        <span class="text-body-secondary">Place footer content here.</span>
+<footer class="footer-tropical mt-auto">
+    <svg class="footer-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,30 C240,0 480,60 720,28 C960,0 1200,52 1440,24 L1440,60 L0,60 Z"></path>
+    </svg>
+    <div class="footer-body py-3">
+        <div class="container d-flex flex-wrap justify-content-between gap-2">
+            <span>🌴 {{ 'footer.text'|trans }}</span>
+            <span>
+                Made with <a href="https://symfony.com">
+                    <twig:ux:icon name="fa-brands:symfony" /> Symfony
+                </a>
+            </span>
+        </div>
     </div>
 </footer>

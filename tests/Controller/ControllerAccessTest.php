@@ -25,13 +25,18 @@ class ControllerAccessTest extends ControllerBaseTest
         ];
 
     /**
-     * @var array<string, array<string, array<string, int>>>
+     * @var array<string, array<string, array<string, int|string>>>
      */
     #[\Override]
     protected array $exceptions
         = [
+            // Redirects to the home page in the browser's language.
             'app_default' => [
+                'statusCodes' => ['GET' => 302],
+            ],
+            'app_home' => [
                 'statusCodes' => ['GET' => 200],
+                'params' => ['{_locale}' => 'en'],
             ],
             'app_login' => [
                 'statusCodes' => ['GET' => 200],

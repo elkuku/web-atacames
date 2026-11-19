@@ -1,5 +1,9 @@
+main {
+    padding-top: 56px;
+}
+
 main > .container {
-    padding: 60px 15px 0;
+    padding-top: 1rem;
 }
 
 .bg-logo {
@@ -73,4 +77,230 @@ main > .container {
  */
 .g_id_signin iframe {
     color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------------
+ * Tropical theme: ocean, turquoise, sand, coral and sunset colors.
+ * ------------------------------------------------------------------------ */
+:root,
+[data-bs-theme="light"] {
+    --tr-ocean: #0b6e79;
+    --tr-ocean-deep: #07505a;
+    --tr-turquoise: #1fb5bd;
+    --tr-sand: #fbf3e2;
+    --tr-coral: #ff6b57;
+    --tr-sunset: #ffb347;
+    --tr-palm: #2a9d5c;
+    --tr-card-bg: #ffffff;
+
+    --bs-body-bg: var(--tr-sand);
+    --bs-primary: var(--tr-ocean);
+    --bs-primary-rgb: 11, 110, 121;
+    --bs-link-color: var(--tr-ocean);
+    --bs-link-color-rgb: 11, 110, 121;
+    --bs-link-hover-color: var(--tr-coral);
+    --bs-link-hover-color-rgb: 255, 107, 87;
+}
+
+[data-bs-theme="dark"] {
+    --tr-ocean: #36c6cf;
+    --tr-ocean-deep: #04313a;
+    --tr-sand: #0c2229;
+    --tr-card-bg: #12313a;
+
+    --bs-body-bg: var(--tr-sand);
+    --bs-primary: #36c6cf;
+    --bs-primary-rgb: 54, 198, 207;
+    --bs-link-color: #5fd7de;
+    --bs-link-color-rgb: 95, 215, 222;
+    --bs-link-hover-color: var(--tr-sunset);
+    --bs-link-hover-color-rgb: 255, 179, 71;
+}
+
+/* Navigation */
+.navbar-tropical {
+    background: linear-gradient(90deg, var(--tr-ocean-deep), #0b6e79 55%, #1fb5bd);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .15);
+}
+
+.navbar-tropical .nav-link.active,
+.navbar-tropical .nav-link:hover {
+    color: var(--tr-sunset);
+}
+
+.language-switcher .nav-link {
+    font-weight: 600;
+    letter-spacing: .03em;
+}
+
+.btn-tropical-icon {
+    color: #fff;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .25);
+}
+
+.btn-tropical-icon:hover,
+.btn-tropical-icon:focus-visible,
+.btn-tropical-icon.show {
+    color: #fff;
+    background: rgba(255, 255, 255, .25);
+}
+
+/* Hero: a sunset over the Pacific */
+.hero {
+    position: relative;
+    padding: 4rem 0 5.5rem;
+    color: #fff;
+    background:
+        radial-gradient(circle at 50% 115%, rgba(255, 214, 102, .9) 0, rgba(255, 179, 71, .55) 22%, transparent 45%),
+        linear-gradient(180deg, #ff9a5a 0%, #ff6b57 35%, #c94f7c 65%, #0b6e79 100%);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+    overflow: hidden;
+}
+
+.hero h1 {
+    letter-spacing: .02em;
+}
+
+.hero-sun {
+    font-size: 3rem;
+    color: #ffe08a;
+    filter: drop-shadow(0 0 18px rgba(255, 224, 138, .9));
+}
+
+.hero-wave {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 63px;
+    fill: var(--tr-sand);
+}
+
+/* Section titles */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--tr-ocean);
+}
+
+.section-title::after {
+    content: "";
+    flex: 1;
+    height: 3px;
+    margin-left: .5rem;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--tr-coral), var(--tr-sunset), transparent);
+}
+
+/* Webcam */
+.webcam {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 4px solid #fff;
+    box-shadow: 0 12px 32px rgba(7, 80, 90, .25);
+    background: var(--tr-ocean-deep);
+}
+
+[data-bs-theme="dark"] .webcam {
+    border-color: var(--tr-card-bg);
+}
+
+.webcam-live {
+    position: absolute;
+    top: .9rem;
+    right: .9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .25rem .7rem;
+    font-size: .85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--tr-coral);
+    border-radius: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+.webcam-dot {
+    width: .55rem;
+    height: .55rem;
+    border-radius: 50%;
+    background: #fff;
+    animation: webcam-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes webcam-pulse {
+    50% { opacity: .25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .webcam-dot { animation: none; }
+}
+
+.webcam-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem 1rem .6rem;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(4, 49, 58, .8));
+}
+
+/* Cards */
+.tropical-card {
+    background: var(--tr-card-bg);
+    border: 0;
+    border-top: 5px solid var(--tr-turquoise);
+    border-radius: 1rem;
+    box-shadow: 0 6px 18px rgba(7, 80, 90, .12);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.tropical-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(7, 80, 90, .2);
+}
+
+.col-md-6:nth-child(3n+2) .tropical-card { border-top-color: var(--tr-coral); }
+.col-md-6:nth-child(3n+3) .tropical-card { border-top-color: var(--tr-palm); }
+
+.tropical-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: .75rem;
+    font-size: 1.4rem;
+    color: #fff;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--tr-turquoise), var(--tr-ocean));
+}
+
+.col-md-6:nth-child(3n+2) .tropical-icon { background: linear-gradient(135deg, var(--tr-sunset), var(--tr-coral)); }
+.col-md-6:nth-child(3n+3) .tropical-icon { background: linear-gradient(135deg, #7ed67e, var(--tr-palm)); }
+
+/* Footer */
+.footer-wave {
+    display: block;
+    width: 100%;
+    height: 40px;
+    fill: var(--tr-ocean-deep);
+}
+
+.footer-body {
+    color: #e6f7f8;
+    background: var(--tr-ocean-deep);
+}
+
+.footer-body a {
+    color: var(--tr-sunset);
 }

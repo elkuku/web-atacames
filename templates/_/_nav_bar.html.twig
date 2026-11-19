@@ -1,7 +1,12 @@
+{% set locale = app.request.locale %}
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params') ?? {} %}
 <!-- Fixed navbar -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-tropical">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('app_default') }}">Atacames</a>
+        <a class="navbar-brand fw-bold" href="{{ path('app_home', {_locale: locale}) }}">
+            <twig:ux:icon name="bi:brightness-high-fill" class="text-warning" /> Atacames
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,35 +14,45 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_default') }}#webcam">Webcam</a>
+                    <a class="nav-link" href="{{ path('app_home', {_locale: locale}) }}#webcam">{{ 'nav.webcam'|trans }}</a>
                 </li>
-                {% if app.user %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item dropdown">
-                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="{{ path('app_user_index') }}">Users</a></li>
-                                <li><a class="dropdown-item" href="{{ path('kuku_sf_system_about') }}">About</a></li>
-                                <li><a class="dropdown-item" href="{{ path('kuku_sf_system_logview') }}">Logview</a></li>
-                            </ul>
-                        </li>
-                    {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_home', {_locale: locale}) }}#discover">{{ 'nav.discover'|trans }}</a>
+                </li>
+                {% if app.user and is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item dropdown">
+                        <button class="btn nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ path('app_user_index') }}">Users</a></li>
+                            <li><a class="dropdown-item" href="{{ path('kuku_sf_system_about') }}">About</a></li>
+                            <li><a class="dropdown-item" href="{{ path('kuku_sf_system_logview') }}">Logview</a></li>
+                        </ul>
+                    </li>
                 {% endif %}
             </ul>
 
+            <ul class="navbar-nav mb-2 mb-md-0 me-md-2 language-switcher" aria-label="{{ 'nav.language'|trans }}">
+                {% for code in ['en', 'de', 'es'] %}
+                    <li class="nav-item">
+                        <a class="nav-link{{ code == locale ? ' active' }}" hreflang="{{ code }}" lang="{{ code }}"
+                           {{ code == locale ? 'aria-current="true"' }}
+                           href="{{ route_params._locale is defined
+                               ? path(route, route_params|merge({_locale: code}))
+                               : path('app_home', {_locale: code}) }}">{{ code|upper }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
 
             {% if app.user %}
                 <div class="dropdown dropstart">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    <button class="btn btn-tropical-icon dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi-person"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="{{ path('app_profile') }}"><i class="bi-person"></i> Profile</a>
-                        </li>
-                        <li><a class="dropdown-item" href="#"><i class="bi-star"></i> Another action</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ path('app_profile') }}"><i class="bi-person"></i> Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

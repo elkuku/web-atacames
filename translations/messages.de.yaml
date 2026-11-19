@@ -1,0 +1,42 @@
+nav:
+    webcam: Webcam
+    discover: Entdecken
+    language: Sprache
+
+home:
+    title: Atacames, Ecuador
+    tagline: Badeort an der Pazifikküste von Esmeraldas, Ecuador
+    welcome: Willkommen %name%!
+    update_profile: Bitte <a href="%url%">vervollständige dein Profil</a>!
+
+webcam:
+    title: Live-Webcam
+    alt: Webcam-Blick auf den Strand und den Malecón von Atacames
+    live: Live
+    caption: Der Blick über den Malecón zum Strand.
+
+discover:
+    title: Atacames entdecken
+
+cards:
+    where:
+        title: Lage
+        text: Atacames liegt in der Provinz Esmeraldas an der nördlichen Pazifikküste Ecuadors, etwa 30 km südwestlich der Stadt Esmeraldas. Der Ort ist Hauptstadt des gleichnamigen Kantons und einer der beliebtesten Badeorte des Landes.
+    beach:
+        title: Der Strand
+        text: Ein langer, breiter Strand mit feinem Sand und das ganze Jahr über warmem Wasser. Am Malecón entlang der Küste reihen sich Hotels, Restaurants und die berühmten Cocktailstände – besonders nachts und an Feiertagswochenenden ist hier viel los.
+    culture:
+        title: Kultur
+        text: Esmeraldas ist das Herz der afro-ecuadorianischen Kultur. Marimba-Musik und -Tanz, von der UNESCO als immaterielles Kulturerbe anerkannt, gehören an der Küste zum Alltag.
+    food:
+        title: Essen
+        text: Überall frische Meeresfrüchte. Encocado (Fisch oder Garnelen in Kokossoße), Ceviche, Encebollado, gebratener Fisch mit Patacones und Cocadas, die Kokosnuss-Süßigkeiten, die am Strand verkauft werden.
+    whales:
+        title: Wale
+        text: Etwa von Juni bis September kommen Buckelwale in die warmen Gewässer vor der Küste, um sich zu paaren und ihre Jungen zur Welt zu bringen. Bootstouren starten in Atacames und im nahen Súa.
+    nearby:
+        title: In der Nähe
+        text: Die ruhigeren Strände von Súa, Same und Tonsupa sind schnell erreicht. Der nächste Flughafen ist in Esmeraldas, und Busse aus Quito brauchen etwa sechs bis sieben Stunden.
+
+footer:
+    text: Sonne, Meer und Marimba an der Küste von Esmeraldas.

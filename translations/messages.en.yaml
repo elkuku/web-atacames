@@ -1,0 +1,42 @@
+nav:
+    webcam: Webcam
+    discover: Discover
+    language: Language
+
+home:
+    title: Atacames, Ecuador
+    tagline: Beach town on the Pacific coast of Esmeraldas, Ecuador
+    welcome: Welcome %name%!
+    update_profile: Please <a href="%url%">update your profile</a>!
+
+webcam:
+    title: Live webcam
+    alt: Webcam view of the beach and the malecón of Atacames
+    live: Live
+    caption: The view over the malecón to the beach.
+
+discover:
+    title: Discover Atacames
+
+cards:
+    where:
+        title: Where
+        text: Atacames lies in the province of Esmeraldas on Ecuador's northern Pacific coast, about 30 km southwest of the city of Esmeraldas. It is the seat of the canton of the same name and one of the most popular beach destinations in the country.
+    beach:
+        title: The beach
+        text: A long, wide beach of fine sand with warm water all year round. The malecón along the shore is lined with hotels, restaurants and the famous cocktail stands, and comes alive at night and on holiday weekends.
+    culture:
+        title: Culture
+        text: Esmeraldas is the heart of Afro-Ecuadorian culture. Marimba music and dance, recognised by UNESCO as intangible cultural heritage, are part of everyday life on the coast.
+    food:
+        title: Food
+        text: Fresh seafood everywhere. Encocado (fish or shrimp in coconut sauce), ceviche, encebollado, fried fish with patacones, and cocadas, the coconut sweets sold on the beach.
+    whales:
+        title: Whales
+        text: From about June to September humpback whales come to the warm waters off the coast to mate and give birth. Boat tours leave from Atacames and nearby Súa.
+    nearby:
+        title: Nearby
+        text: The quieter beaches of Súa, Same and Tonsupa are a short ride away. Esmeraldas has the closest airport, and buses from Quito take about six to seven hours.
+
+footer:
+    text: Sun, sea and marimba on the coast of Esmeraldas.
