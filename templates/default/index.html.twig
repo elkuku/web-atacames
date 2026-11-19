@@ -4,10 +4,15 @@
 
 {% block hero %}
     <section class="hero text-center">
+        <div class="sunset" aria-hidden="true">
+            <span class="sunset-cloud sunset-cloud-1"></span>
+            <span class="sunset-cloud sunset-cloud-2"></span>
+            <span class="sunset-cloud sunset-cloud-3"></span>
+            <span class="sunset-sun"></span>
+            <span class="sunset-sea"></span>
+            <span class="sunset-glitter"></span>
+        </div>
         <div class="container position-relative">
-            <p class="hero-icons mb-2" aria-hidden="true">
-                <twig:ux:icon name="bi:sun-fill" class="hero-sun" />
-            </p>
             <h1 id="site-title" class="display-3 fw-bold">Atacames</h1>
             <p class="lead mb-0">{{ 'home.tagline'|trans }}</p>
         </div>

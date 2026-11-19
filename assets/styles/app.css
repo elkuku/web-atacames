@@ -146,18 +146,89 @@ main > .container {
     background: rgba(255, 255, 255, .25);
 }
 
-/* Hero: a sunset over the Pacific */
+/* Hero: a sunset over the Pacific.
+ * From back to front: sky, clouds, sun, sea with the sun's reflection,
+ * palm trees, text, and the beach (the wave at the bottom). */
 .hero {
+    --horizon: 130px; /* height of the sea, from the bottom of the hero */
     position: relative;
-    padding: 4rem 0 5.5rem;
+    padding: 4rem 0 calc(var(--horizon) + 105px);
     color: #fff;
     background:
-        url("../images/seagulls.svg") no-repeat 18% 28% / 110px auto,
-        url("../images/seagulls.svg") no-repeat 78% 18% / 70px auto,
-        radial-gradient(circle at 50% 115%, rgba(255, 214, 102, .9) 0, rgba(255, 179, 71, .55) 22%, transparent 45%),
-        linear-gradient(180deg, #ff9a5a 0%, #ff6b57 35%, #c94f7c 65%, #0b6e79 100%);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+        url("../images/seagulls.svg") no-repeat 20% 52% / 100px auto,
+        url("../images/seagulls.svg") no-repeat 76% 40% / 64px auto,
+        linear-gradient(180deg,
+            #1d1147 0%,
+            #4a1d6b 20%,
+            #8e2c7c 38%,
+            #d9436f 54%,
+            #ff7a4d 68%,
+            #ffb547 80%,
+            #ffd77a 92%,
+            #ffe9a8 100%);
+    text-shadow: 0 2px 12px rgba(40, 10, 50, .55);
     overflow: hidden;
+}
+
+.sunset,
+.sunset > span {
+    position: absolute;
+    pointer-events: none;
+}
+
+.sunset {
+    inset: 0;
+    z-index: 0;
+}
+
+/* The sun, half sunk below the horizon */
+.sunset-sun {
+    left: 50%;
+    bottom: calc(var(--horizon) - 105px);
+    width: 210px;
+    height: 210px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 45%, #fffbe6 0%, #ffe680 35%, #ffb43c 70%, #ff8a3d 100%);
+    box-shadow:
+        0 0 40px 12px rgba(255, 214, 102, .75),
+        0 0 120px 60px rgba(255, 150, 70, .45),
+        0 0 260px 140px rgba(255, 100, 90, .25);
+}
+
+/* Thin clouds lit from below */
+.sunset-cloud {
+    height: 14px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, transparent, rgba(255, 170, 160, .85) 20%, rgba(255, 210, 170, .9) 60%, transparent);
+    filter: blur(1.5px);
+    opacity: .8;
+}
+
+.sunset-cloud-1 { left: 8%;  bottom: calc(var(--horizon) + 150px); width: 34%; }
+.sunset-cloud-2 { right: 6%; bottom: calc(var(--horizon) + 95px);  width: 28%; height: 10px; }
+.sunset-cloud-3 { left: 30%; bottom: calc(var(--horizon) + 40px);  width: 40%; height: 8px; opacity: .6; }
+
+/* The sea below the horizon */
+.sunset-sea {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--horizon);
+    background: linear-gradient(180deg, #6a2d6e 0%, #3b2a63 35%, #1d3a5f 70%, #0f4a5c 100%);
+    box-shadow: 0 -1px 0 rgba(255, 220, 150, .6);
+}
+
+/* The sun's glittering reflection on the water */
+.sunset-glitter {
+    left: 50%;
+    bottom: 0;
+    width: 240px;
+    height: var(--horizon);
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(180deg, rgba(255, 220, 130, .85) 0 3px, transparent 3px 9px);
+    -webkit-mask-image: radial-gradient(ellipse 50% 100% at 50% 0, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 50% 100% at 50% 0, #000 30%, transparent 75%);
 }
 
 /* Palm silhouettes on both sides of the sunset */
@@ -168,8 +239,8 @@ main > .container {
     bottom: 20px;
     width: 220px;
     height: 320px;
+    z-index: 1;
     background: url("../images/palm-tree.svg") no-repeat bottom / contain;
-    opacity: .9;
     pointer-events: none;
 }
 
@@ -185,12 +256,14 @@ main > .container {
 }
 
 .hero > .container {
-    z-index: 1;
+    z-index: 2;
 }
 
 @media (max-width: 767.98px) {
-    .hero::before { left: -90px; opacity: .55; }
-    .hero::after { right: -70px; opacity: .55; }
+    .hero { --horizon: 100px; }
+    .hero::before { left: -100px; }
+    .hero::after { right: -75px; }
+    .sunset-sun { width: 160px; height: 160px; bottom: calc(var(--horizon) - 80px); }
 }
 
 /* Large palm fronds in the corners of the page */
@@ -227,15 +300,10 @@ body::after {
     letter-spacing: .02em;
 }
 
-.hero-sun {
-    font-size: 3rem;
-    color: #ffe08a;
-    filter: drop-shadow(0 0 18px rgba(255, 224, 138, .9));
-}
 
 .hero-wave {
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     bottom: -3px;
     left: 0;
     width: 100%;
